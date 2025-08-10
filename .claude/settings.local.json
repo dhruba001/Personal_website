@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "Bash(npm create:*)",
+      "Bash(dir)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss init:*)",
+      "Bash(mkdir:*)",
+      "Bash(npm run build:*)",
+      "Bash(timeout 10 npm run dev)",
+      "Bash(npm uninstall:*)"
+    ],
+    "deny": []
+  }
+}
