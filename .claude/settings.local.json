@@ -10,7 +10,13 @@
       "Bash(mkdir:*)",
       "Bash(npm run build:*)",
       "Bash(timeout 10 npm run dev)",
-      "Bash(npm uninstall:*)"
+      "Bash(npm uninstall:*)",
+      "Bash(ssh-agent:*)",
+      "Bash(ssh-add:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git config:*)",
+      "Bash(git push:*)",
+      "Bash(npm run dev:*)"
     ],
     "deny": []
   }
