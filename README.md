@@ -1,7 +1,10 @@
-# Portfolio Website - Dhruba Goswami
+
 
 <div align="center">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=3000&pause=1000&color=36BCF7&width=600&lines=Full+Stack+Developer;UI%2FUX+Enthusiast;Problem+Solver;Always+Learning!" alt="Typing SVG" />
+
+# Portfolio Website - Dhruba Goswami
+    
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=3000&pause=1000&color=36BCF7&width=600&lines=Full+Stack+Developer;UI%2FUX+Enthusiast;Problem+Solver;Always+Learning!" alt="Typing SVG" />
 </div>
 
 <div align="center">
@@ -285,7 +288,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dhruba-goswami-1a042317b/)
 [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/dhruba_001)
-[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white)](https://your-portfolio.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white)](https://personal-website-three-nu-59.vercel.app/)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:gdhruba748@gmail.com)
 
 </div>
