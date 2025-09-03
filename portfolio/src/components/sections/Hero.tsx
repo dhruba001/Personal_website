@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronDown, Github, Linkedin, Mail, Twitter } from 'lucide-react'
 
@@ -7,12 +7,12 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [currentRole, setCurrentRole] = useState(0)
 
-  const roles = [
+  const roles = useMemo(() => [
     'Full Stack Developer',
     'UI/UX Enthusiast',
     'Problem Solver',
     'Always Learning!'
-  ]
+  ], [])
 
   useEffect(() => {
     const currentText = roles[currentRole]
