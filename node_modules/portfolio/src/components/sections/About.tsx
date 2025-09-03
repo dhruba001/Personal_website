@@ -55,53 +55,55 @@ const About = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
               >
                 <div className="font-mono text-lg mb-6">
-                  <span className="text-blue-400">const</span>{' '}
+                  <span className={theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}>const</span>{' '}
                   <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>dhruba</span>{' '}
-                  <span className="text-blue-400">=</span>{' '}
-                  <span className="text-green-400">{'{'}</span>
+                  <span className={theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}>=</span>{' '}
+                  <span className={theme === 'dark' ? 'text-green-400' : 'text-green-600'}>{'{'}</span>
                 </div>
                 
                 <div className={`ml-6 space-y-2 ${
                   theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
                 }`}>
                   <div>
-                    <span className="text-red-400">location</span>
+                    <span className={theme === 'dark' ? 'text-red-400' : 'text-red-600'}>location</span>
                     <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>:</span>{' '}
-                    <span className="text-green-400">"🌍 Earth"</span>,
+                    <span className={theme === 'dark' ? 'text-green-400' : 'text-green-600'}>"🌍 Earth"</span>,
                   </div>
                   <div>
-                    <span className="text-red-400">currentFocus</span>
+                    <span className={theme === 'dark' ? 'text-red-400' : 'text-red-600'}>currentFocus</span>
                     <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>:</span>{' '}
-                    <span className="text-green-400">"Building amazing web experiences"</span>,
+                    <span className={theme === 'dark' ? 'text-green-400' : 'text-green-600'}>"Building amazing web experiences"</span>,
                   </div>
                   <div>
-                    <span className="text-red-400">interests</span>
+                    <span className={theme === 'dark' ? 'text-red-400' : 'text-red-600'}>interests</span>
                     <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>:</span>{' '}
-                    <span className="text-yellow-400">
+                    <span className={theme === 'dark' ? 'text-yellow-400' : 'text-yellow-600'}>
                       ["Web Development", "UI/UX Design", "Open Source"]
                     </span>,
                   </div>
                   <div>
-                    <span className="text-red-400">funFact</span>
+                    <span className={theme === 'dark' ? 'text-red-400' : 'text-red-600'}>funFact</span>
                     <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>:</span>{' '}
-                    <span className="text-green-400">"I turn coffee ☕ into code 🚀"</span>,
+                    <span className={theme === 'dark' ? 'text-green-400' : 'text-green-600'}>"I turn coffee ☕ into code 🚀"</span>,
                   </div>
                   <div>
-                    <span className="text-red-400">motto</span>
+                    <span className={theme === 'dark' ? 'text-red-400' : 'text-red-600'}>motto</span>
                     <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>:</span>{' '}
-                    <span className="text-green-400">"Code with passion, create with purpose"</span>,
+                    <span className={theme === 'dark' ? 'text-green-400' : 'text-green-600'}>"Code with passion, create with purpose"</span>,
                   </div>
                 </div>
                 
                 <div className="font-mono text-lg mt-6">
-                  <span className="text-green-400">{'}'}</span>
-                  <span className="text-blue-400">;</span>
+                  <span className={theme === 'dark' ? 'text-green-400' : 'text-green-600'}>{'}'}</span>
+                  <span className={theme === 'dark' ? 'text-blue-400' : 'text-blue-600'}>;</span>
                 </div>
               </motion.div>
 
               <motion.p 
                 variants={itemVariants}
-                className="text-gray-300 text-lg leading-relaxed"
+                className={`text-lg leading-relaxed ${
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                }`}
               >
                 I'm a passionate full-stack developer with expertise in modern web technologies. 
                 I love creating digital experiences that are not only functional but also beautiful 
@@ -151,7 +153,9 @@ const About = () => {
                       }`}>
                         {stat.value}
                       </div>
-                      <div className="text-gray-400 text-sm">
+                      <div className={`text-sm ${
+                        theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
+                      }`}>
                         {stat.label}
                       </div>
                     </motion.div>
@@ -183,7 +187,7 @@ const About = () => {
                       className="flex items-center space-x-3"
                     >
                       <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                      <span className="text-gray-300">{item}</span>
+                      <span className={theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}>{item}</span>
                     </motion.div>
                   ))}
                 </div>

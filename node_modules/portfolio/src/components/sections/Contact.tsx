@@ -180,7 +180,11 @@ const Contact = () => {
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.1, y: -2 }}
                           whileTap={{ scale: 0.9 }}
-                          className={`p-3 rounded-lg bg-white/10 text-gray-300 ${social.color} transition-all duration-300 hover:bg-white/20`}
+                          className={`p-3 rounded-lg transition-all duration-300 ${
+                            theme === 'dark'
+                              ? `bg-white/10 text-gray-300 ${social.color} hover:bg-white/20`
+                              : `bg-black/10 text-gray-700 ${social.color} hover:bg-black/20`
+                          }`}
                           title={social.label}
                         >
                           <Icon size={20} />

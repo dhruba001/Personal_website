@@ -91,7 +91,9 @@ const Hero = () => {
             className="mb-8"
           >
             <div className="h-16 flex items-center justify-center">
-              <span className="text-xl sm:text-2xl lg:text-3xl text-blue-400 font-mono">
+              <span className={`text-xl sm:text-2xl lg:text-3xl font-mono ${
+                theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+              }`}>
                 {displayText}
                 <span className="animate-pulse">|</span>
               </span>
@@ -108,7 +110,9 @@ const Hero = () => {
           >
             Passionate Developer | Creative Thinker | Innovation Enthusiast
             <br />
-            <span className="text-blue-400 font-mono text-base">
+            <span className={`font-mono text-base ${
+              theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+            }`}>
               "Code with passion, create with purpose"
             </span>
           </motion.p>
@@ -154,7 +158,11 @@ const Hero = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.2, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className={`p-3 rounded-full bg-white/10 backdrop-blur-sm text-gray-300 ${link.color} transition-all duration-300 hover:shadow-lg`}
+                  className={`p-3 rounded-full backdrop-blur-sm transition-all duration-300 hover:shadow-lg ${
+                    theme === 'dark' 
+                      ? `bg-white/10 text-gray-300 ${link.color}` 
+                      : `bg-black/10 text-gray-700 ${link.color}`
+                  }`}
                   title={link.label}
                 >
                   <Icon size={24} />

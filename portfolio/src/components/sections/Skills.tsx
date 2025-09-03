@@ -78,7 +78,9 @@ const Skills = () => {
           <span className={`font-medium ${
             theme === 'dark' ? 'text-white' : 'text-gray-900'
           }`}>{skill.name}</span>
-          <span className="text-blue-400 font-bold">{skill.level}%</span>
+          <span className={`font-bold ${
+            theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+          }`}>{skill.level}%</span>
         </div>
         <div className="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
           <motion.div
@@ -169,7 +171,7 @@ const Skills = () => {
               <h3 className={`text-xl font-bold mb-2 ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>Always Learning</h3>
-              <p className="text-gray-400">
+              <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
                 Continuously exploring new technologies and best practices
               </p>
             </motion.div>
@@ -182,7 +184,7 @@ const Skills = () => {
               <h3 className={`text-xl font-bold mb-2 ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>Performance Focused</h3>
-              <p className="text-gray-400">
+              <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
                 Optimizing for speed, scalability, and user experience
               </p>
             </motion.div>
@@ -195,7 +197,7 @@ const Skills = () => {
               <h3 className={`text-xl font-bold mb-2 ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>Best Practices</h3>
-              <p className="text-gray-400">
+              <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
                 Following industry standards and clean code principles
               </p>
             </motion.div>
