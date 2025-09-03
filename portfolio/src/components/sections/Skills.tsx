@@ -110,7 +110,7 @@ const Skills = () => {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
             <p className={`text-lg max-w-2xl mx-auto ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
             }`}>
               Constantly evolving skillset with expertise across the full development stack
             </p>

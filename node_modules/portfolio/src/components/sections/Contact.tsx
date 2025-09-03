@@ -118,7 +118,7 @@ const Contact = () => {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
             <p className={`text-lg max-w-2xl mx-auto ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
             }`}>
               Ready to bring your ideas to life? Let's discuss how we can work together to create something amazing.
             </p>
@@ -132,7 +132,7 @@ const Contact = () => {
                   theme === 'dark' ? 'text-white' : 'text-gray-900'
                 }`}>Let's Connect</h3>
                 <p className={`mb-8 leading-relaxed ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
                 }`}>
                   I'm always excited to work on new projects and collaborate with fellow developers. 
                   Whether you have a project in mind, want to discuss opportunities, or just want to say hi, 
@@ -205,7 +205,7 @@ const Contact = () => {
                     className="space-y-2"
                   >
                     <label className={`text-sm font-medium ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                      theme === 'dark' ? 'text-gray-300' : 'text-gray-800'
                     }`}>Name</label>
                     <input
                       type="text"
@@ -216,7 +216,7 @@ const Contact = () => {
                       className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-400 transition-all duration-300 ${
                         theme === 'dark' 
                           ? 'bg-white/5 border-white/10 text-white placeholder-gray-500 focus:bg-white/10'
-                          : 'bg-black/5 border-black/20 text-gray-900 placeholder-gray-400 focus:bg-black/10'
+                          : 'bg-white/90 border-gray-300 text-gray-900 placeholder-gray-500 focus:bg-white shadow-sm'
                       }`}
                       placeholder="Your name"
                     />
@@ -227,7 +227,7 @@ const Contact = () => {
                     className="space-y-2"
                   >
                     <label className={`text-sm font-medium ${
-                      theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                      theme === 'dark' ? 'text-gray-300' : 'text-gray-800'
                     }`}>Email</label>
                     <input
                       type="email"
@@ -238,7 +238,7 @@ const Contact = () => {
                       className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:border-blue-400 transition-all duration-300 ${
                         theme === 'dark' 
                           ? 'bg-white/5 border-white/10 text-white placeholder-gray-500 focus:bg-white/10'
-                          : 'bg-black/5 border-black/20 text-gray-900 placeholder-gray-400 focus:bg-black/10'
+                          : 'bg-white/90 border-gray-300 text-gray-900 placeholder-gray-500 focus:bg-white shadow-sm'
                       }`}
                       placeholder="your.email@example.com"
                     />
@@ -247,7 +247,7 @@ const Contact = () => {
 
                 <motion.div whileFocus={{ scale: 1.02 }} className="space-y-2 mb-6">
                   <label className={`text-sm font-medium ${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                    theme === 'dark' ? 'text-gray-300' : 'text-gray-800'
                   }`}>Subject</label>
                   <input
                     type="text"
@@ -266,7 +266,7 @@ const Contact = () => {
 
                 <motion.div whileFocus={{ scale: 1.02 }} className="space-y-2 mb-8">
                   <label className={`text-sm font-medium ${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+                    theme === 'dark' ? 'text-gray-300' : 'text-gray-800'
                   }`}>Message</label>
                   <textarea
                     name="message"

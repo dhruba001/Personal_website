@@ -67,10 +67,19 @@ html {
   }
   
   .light .glass-effect {
-    @apply bg-black/5 backdrop-blur-md border border-black/10;
+    @apply bg-white/80 backdrop-blur-md border border-white/40 shadow-lg shadow-blue-200/20;
   }
   
   .light .card-shadow {
     @apply shadow-lg shadow-blue-500/10 hover:shadow-xl hover:shadow-blue-500/20;
+  }
+  
+  /* Light mode specific styling */
+  .light {
+    background-attachment: fixed;
+  }
+  
+  .light .text-gradient {
+    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent;
   }
 }

@@ -101,7 +101,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             className={`text-lg sm:text-xl mb-12 max-w-3xl mx-auto leading-relaxed ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-800'
             }`}
           >
             Passionate Developer | Creative Thinker | Innovation Enthusiast

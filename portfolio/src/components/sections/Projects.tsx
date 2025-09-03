@@ -99,7 +99,7 @@ const Projects = () => {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
             <p className={`text-lg max-w-2xl mx-auto ${
-              theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+              theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
             }`}>
               A showcase of my recent work and creative solutions
             </p>
@@ -194,7 +194,7 @@ const Projects = () => {
                   </div>
                   
                   <p className={`text-sm mb-4 leading-relaxed ${
-                    theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                    theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
                   }`}>
                     {project.description}
                   </p>
@@ -220,7 +220,7 @@ const Projects = () => {
                       className={`flex items-center gap-2 text-sm transition-colors duration-300 ${
                         theme === 'dark' 
                           ? 'text-gray-300 hover:text-white' 
-                          : 'text-gray-600 hover:text-gray-900'
+                          : 'text-gray-700 hover:text-gray-900'
                       }`}
                     >
                       <Github size={16} />

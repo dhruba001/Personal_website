@@ -62,7 +62,7 @@ const About = () => {
                 </div>
                 
                 <div className={`ml-6 space-y-2 ${
-                  theme === 'dark' ? 'text-gray-300' : 'text-gray-600'
+                  theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
                 }`}>
                   <div>
                     <span className="text-red-400">location</span>

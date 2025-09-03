@@ -19,8 +19,18 @@ function AppContent() {
     <div className={`relative min-h-screen overflow-x-hidden transition-colors duration-500 ${
       theme === 'dark' 
         ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white' 
-        : 'bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 text-gray-900'
+        : 'bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-gray-900'
     }`}>
+      {theme === 'light' && (
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-100/30 via-purple-100/20 to-pink-100/30"></div>
+      )}
+      {theme === 'light' && (
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-200/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute bottom-1/4 left-1/3 w-64 h-64 bg-pink-200/20 rounded-full blur-3xl animate-pulse delay-500"></div>
+        </div>
+      )}
       <ParticleBackground />
       <Navbar />
       <main className="relative z-10">

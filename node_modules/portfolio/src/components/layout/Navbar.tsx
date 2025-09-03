@@ -41,7 +41,9 @@ const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled 
           ? 'glass-effect backdrop-blur-lg shadow-lg' 
-          : 'bg-transparent'
+          : theme === 'light' 
+            ? 'bg-white/20 backdrop-blur-sm' 
+            : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,7 +69,7 @@ const Navbar = () => {
                   className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 ${
                     theme === 'dark' 
                       ? 'text-gray-300 hover:text-white hover:bg-white/10' 
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-black/10'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-white/20'
                   }`}
                 >
                   {item.name}
@@ -137,7 +139,7 @@ const Navbar = () => {
                   className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium transition-all duration-300 ${
                     theme === 'dark' 
                       ? 'text-gray-300 hover:text-white hover:bg-white/10' 
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-black/10'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-white/20'
                   }`}
                 >
                   {item.name}
