@@ -111,7 +111,11 @@ const Navbar = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-gray-400 hover:text-white hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20"
+              className={`p-2 rounded-md focus:outline-none focus:ring-2 transition-all duration-300 ${
+                theme === 'dark'
+                  ? 'text-gray-400 hover:text-white hover:bg-white/10 focus:ring-white/20'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-black/10 focus:ring-black/20'
+              }`}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </motion.button>

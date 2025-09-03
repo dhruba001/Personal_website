@@ -66,29 +66,29 @@ const About = () => {
                 }`}>
                   <div>
                     <span className="text-red-400">location</span>
-                    <span className="text-white">:</span>{' '}
+                    <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>:</span>{' '}
                     <span className="text-green-400">"🌍 Earth"</span>,
                   </div>
                   <div>
                     <span className="text-red-400">currentFocus</span>
-                    <span className="text-white">:</span>{' '}
+                    <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>:</span>{' '}
                     <span className="text-green-400">"Building amazing web experiences"</span>,
                   </div>
                   <div>
                     <span className="text-red-400">interests</span>
-                    <span className="text-white">:</span>{' '}
+                    <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>:</span>{' '}
                     <span className="text-yellow-400">
                       ["Web Development", "UI/UX Design", "Open Source"]
                     </span>,
                   </div>
                   <div>
                     <span className="text-red-400">funFact</span>
-                    <span className="text-white">:</span>{' '}
+                    <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>:</span>{' '}
                     <span className="text-green-400">"I turn coffee ☕ into code 🚀"</span>,
                   </div>
                   <div>
                     <span className="text-red-400">motto</span>
-                    <span className="text-white">:</span>{' '}
+                    <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>:</span>{' '}
                     <span className="text-green-400">"Code with passion, create with purpose"</span>,
                   </div>
                 </div>
@@ -146,7 +146,9 @@ const About = () => {
                       >
                         <Icon size={32} />
                       </motion.div>
-                      <div className="text-2xl font-bold text-white mb-1">
+                      <div className={`text-2xl font-bold mb-1 ${
+                        theme === 'dark' ? 'text-white' : 'text-gray-900'
+                      }`}>
                         {stat.value}
                       </div>
                       <div className="text-gray-400 text-sm">
@@ -161,7 +163,9 @@ const About = () => {
                 variants={itemVariants}
                 className="glass-effect rounded-xl p-6"
               >
-                <h3 className="text-xl font-bold text-white mb-4">
+                <h3 className={`text-xl font-bold mb-4 ${
+                  theme === 'dark' ? 'text-white' : 'text-gray-900'
+                }`}>
                   Current Learning Focus
                 </h3>
                 <div className="space-y-3">

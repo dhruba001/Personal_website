@@ -73,7 +73,9 @@ const Hero = () => {
             className="mb-6"
           >
             <motion.h1 
-              className="text-4xl sm:text-6xl lg:text-7xl font-bold text-white mb-4"
+              className={`text-4xl sm:text-6xl lg:text-7xl font-bold mb-4 ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
@@ -171,7 +173,11 @@ const Hero = () => {
               animate={{ y: [0, 10, 0] }}
               transition={{ repeat: Infinity, duration: 2 }}
               onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-              className="cursor-pointer text-white/60 hover:text-white transition-colors duration-300"
+              className={`cursor-pointer transition-colors duration-300 ${
+                theme === 'dark' 
+                  ? 'text-white/60 hover:text-white' 
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
             >
               <ChevronDown size={32} />
             </motion.div>

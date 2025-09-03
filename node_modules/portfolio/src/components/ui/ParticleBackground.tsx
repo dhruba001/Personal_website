@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useTheme } from '../../contexts/ThemeContext'
 
 interface Particle {
   x: number
@@ -14,6 +15,7 @@ const ParticleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const particles = useRef<Particle[]>([])
   const animationRef = useRef<number | null>(null)
+  const { theme } = useTheme()
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -39,7 +41,9 @@ const ParticleBackground = () => {
           vy: (Math.random() - 0.5) * 0.5,
           size: Math.random() * 2 + 0.5,
           opacity: Math.random() * 0.5 + 0.2,
-          color: `rgba(59, 130, 246, ${Math.random() * 0.5 + 0.2})`,
+          color: theme === 'dark' 
+            ? `rgba(59, 130, 246, ${Math.random() * 0.5 + 0.2})`
+            : `rgba(99, 102, 241, ${Math.random() * 0.3 + 0.1})`,
         })
       }
     }
@@ -57,7 +61,9 @@ const ParticleBackground = () => {
 
       // Draw connections
       ctx.globalAlpha = 0.1
-      ctx.strokeStyle = 'rgba(59, 130, 246, 0.3)'
+      ctx.strokeStyle = theme === 'dark' 
+        ? 'rgba(59, 130, 246, 0.3)'
+        : 'rgba(99, 102, 241, 0.2)'
       ctx.lineWidth = 1
 
       for (let i = 0; i < particles.current.length; i++) {
@@ -114,7 +120,7 @@ const ParticleBackground = () => {
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [])
+  }, [theme])
 
   return (
     <canvas

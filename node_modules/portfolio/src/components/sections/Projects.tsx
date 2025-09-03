@@ -145,7 +145,9 @@ const Projects = () => {
                 {/* Project Image */}
                 <div className="relative aspect-video overflow-hidden">
                   <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                    <div className="text-center text-white/60">
+                    <div className={`text-center ${
+                      theme === 'dark' ? 'text-white/60' : 'text-gray-700'
+                    }`}>
                       <div className="text-6xl mb-4">🚀</div>
                       <div className="text-lg font-semibold">{project.title}</div>
                     </div>
@@ -159,7 +161,11 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors duration-300"
+                      className={`p-3 backdrop-blur-sm rounded-full transition-colors duration-300 ${
+                        theme === 'dark'
+                          ? 'bg-white/20 text-white hover:bg-white/30'
+                          : 'bg-black/10 text-gray-700 hover:bg-black/20'
+                      }`}
                       title="View Code"
                     >
                       <Github size={20} />
@@ -170,7 +176,11 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
-                      className="p-3 bg-white/20 backdrop-blur-sm rounded-full text-white hover:bg-white/30 transition-colors duration-300"
+                      className={`p-3 backdrop-blur-sm rounded-full transition-colors duration-300 ${
+                        theme === 'dark'
+                          ? 'bg-white/20 text-white hover:bg-white/30'
+                          : 'bg-black/10 text-gray-700 hover:bg-black/20'
+                      }`}
                       title="Live Demo"
                     >
                       <ExternalLink size={20} />
