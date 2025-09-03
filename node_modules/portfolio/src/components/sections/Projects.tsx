@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ExternalLink, Github, Play } from 'lucide-react'
-import { useState } from 'react'
+import { ExternalLink, Github, Play, Star, RefreshCw } from 'lucide-react'
+import { useState, useEffect } from 'react'
 import { useTheme } from '../../contexts/ThemeContext'
+import { getFilteredProjects, type ProjectData } from '../../services/githubApi'
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -12,53 +13,40 @@ const Projects = () => {
 
   const [filter, setFilter] = useState('all')
   const { theme } = useTheme()
+  const [projects, setProjects] = useState<ProjectData[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-  const projects = [
-    {
-      id: 1,
-      title: 'MovieGPT',
-      description: 'AI-powered streaming platform that blends a modern interface with advanced movie discovery features.',
-      image: '/api/placeholder/600/400',
-      tags: ['React', 'Redux Toolkit', 'Firebase', 'Tailwind CSS'],
-      category: 'web',
-      github: 'https://github.com/dhruba001/MovieGPT',
-      demo: 'https://moviegpt-de581.web.app/',
-      featured: true
-    },
-    {
-      id: 2,
-      title: 'QuickBite',
-      description: 'Full-stack food delivery web application inspired by Swiggy with modern UI and responsive design.',
-      image: '/api/placeholder/600/400',
-      tags: ['React', 'JavaScript', 'Responsive Design'],
-      category: 'web',
-      github: 'https://github.com/dhruba001/QuickBite',
-      demo: 'https://quick-bite-two-rho.vercel.app/',
-      featured: true
-    },
-    {
-      id: 3,
-      title: 'Floating Dots',
-      description: 'Mesmerizing interactive web experience featuring floating particles and smooth animations.',
-      image: '/api/placeholder/600/400',
-      tags: ['React', 'JavaScript', 'Animation', 'Interactive'],
-      category: 'creative',
-      github: 'https://github.com/dhruba001/floating-dots',
-      demo: '#',
-      featured: true
-    },
-    {
-      id: 4,
-      title: 'Personal Website',
-      description: 'Modern, responsive portfolio website showcasing journey as a Full Stack Developer.',
-      image: '/api/placeholder/600/400',
-      tags: ['TypeScript', 'React', 'Portfolio'],
-      category: 'template',
-      github: 'https://github.com/dhruba001/Personal_website',
-      demo: 'https://personal-website-three-nu-59.vercel.app',
-      featured: false
+  useEffect(() => {
+    const loadProjects = async () => {
+      try {
+        setLoading(true)
+        const githubProjects = await getFilteredProjects()
+        setProjects(githubProjects)
+      } catch (err) {
+        setError('Failed to load projects from GitHub')
+        // Fallback projects if API fails
+        setProjects([
+          {
+            id: 1,
+            title: 'MovieGPT',
+            description: 'AI-powered streaming platform with movie discovery features.',
+            tags: ['React', 'Redux', 'Firebase'],
+            category: 'web',
+            github: 'https://github.com/dhruba001/MovieGPT',
+            demo: 'https://moviegpt-de581.web.app/',
+            featured: true,
+            stars: 0,
+            updatedAt: new Date().toISOString()
+          }
+        ])
+      } finally {
+        setLoading(false)
+      }
     }
-  ]
+
+    loadProjects()
+  }, [])
 
   const categories = [
     { key: 'all', label: 'All Projects' },
@@ -70,6 +58,19 @@ const Projects = () => {
   const filteredProjects = filter === 'all' 
     ? projects 
     : projects.filter(project => project.category === filter)
+
+  const refreshProjects = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      const githubProjects = await getFilteredProjects()
+      setProjects(githubProjects)
+    } catch (err) {
+      setError('Failed to refresh projects')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -92,17 +93,38 @@ const Projects = () => {
           className="max-w-7xl mx-auto"
         >
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className={`text-4xl sm:text-5xl font-bold mb-4 ${
-              theme === 'dark' ? 'text-white' : 'text-gray-900'
-            }`}>
-              Featured <span className="text-gradient">Projects</span>
-            </h2>
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <h2 className={`text-4xl sm:text-5xl font-bold ${
+                theme === 'dark' ? 'text-white' : 'text-gray-900'
+              }`}>
+                Featured <span className="text-gradient">Projects</span>
+              </h2>
+              <motion.button
+                onClick={refreshProjects}
+                disabled={loading}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className={`p-2 rounded-lg glass-effect transition-all duration-300 ${
+                  loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-white/10'
+                }`}
+                title="Refresh projects from GitHub"
+              >
+                <RefreshCw size={20} className={`${loading ? 'animate-spin' : ''} ${
+                  theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+                }`} />
+              </motion.button>
+            </div>
             <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 mx-auto mb-6"></div>
             <p className={`text-lg max-w-2xl mx-auto ${
               theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
             }`}>
-              A showcase of my recent work and creative solutions
+              Live projects automatically synced from my GitHub
             </p>
+            {error && (
+              <p className="text-red-500 text-sm mt-2">
+                {error} - Showing cached projects
+              </p>
+            )}
           </motion.div>
 
           {/* Filter Buttons */}
@@ -132,8 +154,15 @@ const Projects = () => {
           </motion.div>
 
           {/* Projects Grid */}
-          <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project) => (
+          {loading ? (
+            <div className="flex justify-center items-center py-20">
+              <RefreshCw size={32} className={`animate-spin ${
+                theme === 'dark' ? 'text-blue-400' : 'text-blue-600'
+              }`} />
+            </div>
+          ) : (
+            <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
@@ -196,11 +225,25 @@ const Projects = () => {
                     }`}>
                       {project.title}
                     </h3>
-                    {project.featured && (
-                      <span className="px-2 py-1 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 text-yellow-400 text-xs rounded-full border border-yellow-400/30">
-                        Featured
-                      </span>
-                    )}
+                    <div className="flex items-center gap-2">
+                      {project.stars > 0 && (
+                        <div className="flex items-center gap-1">
+                          <Star size={14} className={theme === 'dark' ? 'text-yellow-400' : 'text-yellow-600'} />
+                          <span className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+                            {project.stars}
+                          </span>
+                        </div>
+                      )}
+                      {project.featured && (
+                        <span className={`px-2 py-1 bg-gradient-to-r text-xs rounded-full border ${
+                          theme === 'dark'
+                            ? 'from-yellow-400/20 to-orange-400/20 text-yellow-400 border-yellow-400/30'
+                            : 'from-yellow-500/20 to-orange-500/20 text-yellow-700 border-yellow-500/30'
+                        }`}>
+                          Featured
+                        </span>
+                      )}
+                    </div>
                   </div>
                   
                   <p className={`text-sm mb-4 leading-relaxed ${
@@ -242,7 +285,11 @@ const Projects = () => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 text-blue-400 hover:text-blue-300 text-sm transition-colors duration-300"
+                      className={`flex items-center gap-2 text-sm transition-colors duration-300 ${
+                        theme === 'dark' 
+                          ? 'text-blue-400 hover:text-blue-300' 
+                          : 'text-blue-600 hover:text-blue-700'
+                      }`}
                     >
                       <Play size={16} />
                       Demo
@@ -250,8 +297,9 @@ const Projects = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
-          </motion.div>
+              ))}
+            </motion.div>
+          )}
 
           {/* More Projects CTA */}
           <motion.div
