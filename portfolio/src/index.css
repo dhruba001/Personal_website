@@ -31,6 +31,10 @@ html {
   background: #1e293b;
 }
 
+.light ::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #3b82f6;
   border-radius: 4px;
@@ -38,6 +42,14 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #2563eb;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #64748b;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #475569;
 }
 
 /* Custom utilities */
@@ -52,5 +64,13 @@ html {
   
   .glass-effect {
     @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+  
+  .light .glass-effect {
+    @apply bg-black/5 backdrop-blur-md border border-black/10;
+  }
+  
+  .light .card-shadow {
+    @apply shadow-lg shadow-blue-500/10 hover:shadow-xl hover:shadow-blue-500/20;
   }
 }
