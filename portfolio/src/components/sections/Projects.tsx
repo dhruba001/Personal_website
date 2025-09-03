@@ -14,32 +14,32 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'NetflixGPT',
-      description: 'AI-powered streaming platform with intelligent content recommendations using OpenAI GPT-3.5 and TMDB API integration.',
+      title: 'MovieGPT',
+      description: 'AI-powered streaming platform that blends a modern interface with advanced movie discovery features.',
       image: '/api/placeholder/600/400',
-      tags: ['React', 'Redux', 'OpenAI', 'Firebase', 'Tailwind'],
+      tags: ['React', 'Redux Toolkit', 'Firebase', 'Tailwind CSS'],
       category: 'web',
-      github: 'https://github.com/dhruba001/NetflixGPT',
-      demo: '#',
+      github: 'https://github.com/dhruba001/MovieGPT',
+      demo: 'https://moviegpt-de581.web.app/',
       featured: true
     },
     {
       id: 2,
       title: 'QuickBite',
-      description: 'Full-stack food delivery web application with real-time order tracking, payment integration, and responsive design.',
+      description: 'Full-stack food delivery web application inspired by Swiggy with modern UI and responsive design.',
       image: '/api/placeholder/600/400',
-      tags: ['React', 'Node.js', 'MongoDB', 'Express', 'Stripe'],
+      tags: ['React', 'JavaScript', 'Responsive Design'],
       category: 'web',
       github: 'https://github.com/dhruba001/QuickBite',
-      demo: '#',
+      demo: 'https://quick-bite-two-rho.vercel.app/',
       featured: true
     },
     {
       id: 3,
       title: 'Floating Dots',
-      description: 'Interactive web experience with mesmerizing particle animations and fluid dynamics using Canvas API and mathematical algorithms.',
+      description: 'Mesmerizing interactive web experience featuring floating particles and smooth animations.',
       image: '/api/placeholder/600/400',
-      tags: ['JavaScript', 'Canvas API', 'CSS3', 'Animation'],
+      tags: ['React', 'JavaScript', 'Animation', 'Interactive'],
       category: 'creative',
       github: 'https://github.com/dhruba001/floating-dots',
       demo: '#',
@@ -47,35 +47,13 @@ const Projects = () => {
     },
     {
       id: 4,
-      title: 'Task Manager Pro',
-      description: 'Collaborative task management application with drag-and-drop functionality, team workspaces, and real-time collaboration.',
+      title: 'Personal Website',
+      description: 'Modern, responsive portfolio website showcasing journey as a Full Stack Developer.',
       image: '/api/placeholder/600/400',
-      tags: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL'],
-      category: 'web',
-      github: '#',
-      demo: '#',
-      featured: false
-    },
-    {
-      id: 5,
-      title: 'Portfolio Template',
-      description: 'Modern, responsive portfolio template with dark mode, smooth animations, and customizable components for developers.',
-      image: '/api/placeholder/600/400',
-      tags: ['React', 'Framer Motion', 'Tailwind', 'TypeScript'],
+      tags: ['TypeScript', 'React', 'Portfolio'],
       category: 'template',
-      github: '#',
-      demo: '#',
-      featured: false
-    },
-    {
-      id: 6,
-      title: 'Weather Dashboard',
-      description: 'Beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics.',
-      image: '/api/placeholder/600/400',
-      tags: ['Vue.js', 'Weather API', 'Charts.js', 'Geolocation'],
-      category: 'web',
-      github: '#',
-      demo: '#',
+      github: 'https://github.com/dhruba001/Personal_website',
+      demo: 'https://personal-website-three-nu-59.vercel.app',
       featured: false
     }
   ]
