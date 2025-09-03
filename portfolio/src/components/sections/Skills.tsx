@@ -2,6 +2,12 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
 
+interface Skill {
+  name: string
+  level: number
+  color: string
+}
+
 const Skills = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -59,7 +65,7 @@ const Skills = () => {
     visible: { y: 0, opacity: 1 }
   }
 
-  const ProgressBar = ({ skill, index }: { skill: any, index: number }) => {
+  const ProgressBar = ({ skill, index }: { skill: Skill, index: number }) => {
     return (
       <motion.div
         variants={itemVariants}
