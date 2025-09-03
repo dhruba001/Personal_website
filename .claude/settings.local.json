@@ -18,7 +18,9 @@
       "Bash(git push:*)",
       "Bash(npm run dev:*)",
       "WebFetch(domain:api.github.com)",
-      "Bash(npm run lint)"
+      "Bash(npm run lint)",
+      "Bash(npm update:*)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }
