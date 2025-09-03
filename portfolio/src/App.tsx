@@ -6,14 +6,21 @@ import Projects from './components/sections/Projects'
 import Skills from './components/sections/Skills'
 import Contact from './components/sections/Contact'
 import ParticleBackground from './components/ui/ParticleBackground'
+import { ThemeProvider, useTheme } from './contexts/ThemeContext'
 
-function App() {
+function AppContent() {
+  const { theme } = useTheme()
+  
   useEffect(() => {
     document.title = 'Dhruba Goswami - Full Stack Developer'
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white overflow-x-hidden">
+    <div className={`relative min-h-screen overflow-x-hidden transition-colors duration-500 ${
+      theme === 'dark' 
+        ? 'bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white' 
+        : 'bg-gradient-to-br from-slate-50 via-blue-50 to-slate-50 text-gray-900'
+    }`}>
       <ParticleBackground />
       <Navbar />
       <main className="relative z-10">
@@ -24,6 +31,14 @@ function App() {
         <Contact />
       </main>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   )
 }
 
