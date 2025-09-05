@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Sun, Moon } from 'lucide-react'
 import { useTheme } from '../../contexts/ThemeContext'
+import profileImage from '../../assets/dhrubagoswami.jpg'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,6 +12,8 @@ const Navbar = () => {
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
+    { name: 'GitHub', href: '#github' },
+    { name: 'LeetCode', href: '#leetcode' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
@@ -51,10 +54,23 @@ const Navbar = () => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="text-xl font-bold text-gradient cursor-pointer"
+            className="flex items-center gap-3 cursor-pointer"
             onClick={() => handleNavClick('#home')}
           >
-            &lt;DhrubaGoswami /&gt;
+            <motion.div 
+              className="relative w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 p-0.5"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <img 
+                src={profileImage} 
+                alt="Dhruba Goswami" 
+                className="w-full h-full rounded-full object-cover"
+              />
+            </motion.div>
+            <span className="text-xl font-bold text-gradient">
+              &lt;DhrubaGoswami /&gt;
+            </span>
           </motion.div>
 
           {/* Desktop Navigation */}

@@ -1,7 +1,8 @@
 import { useEffect, useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Github, Linkedin, Mail, Twitter } from 'lucide-react'
+import { ChevronDown, Github, Linkedin, Mail, Twitter, Download } from 'lucide-react'
 import { useTheme } from '../../contexts/ThemeContext'
+import resumePdf from '../../assets/dhruba_resume_sep.pdf'
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('')
@@ -140,6 +141,17 @@ const Hero = () => {
             >
               Get In Touch
             </motion.button>
+
+            <motion.a
+              href={resumePdf}
+              download="Dhruba_Goswami_Resume.pdf"
+              whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(16, 185, 129, 0.3)' }}
+              whileTap={{ scale: 0.95 }}
+              className="px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
+            >
+              <Download size={20} />
+              Download Resume
+            </motion.a>
           </motion.div>
 
           <motion.div
