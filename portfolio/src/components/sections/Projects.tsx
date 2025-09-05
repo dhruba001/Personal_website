@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ExternalLink, Github, Play, Star, RefreshCw } from 'lucide-react'
+import { ExternalLink, Github, Star, RefreshCw } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useTheme } from '../../contexts/ThemeContext'
 import { getFilteredProjects, type ProjectData } from '../../services/githubApi'
@@ -161,15 +161,13 @@ const Projects = () => {
               }`} />
             </div>
           ) : (
-            <motion.div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
-                className={`glass-effect rounded-xl overflow-hidden card-shadow group ${
-                  project.featured ? 'lg:col-span-2' : ''
-                }`}
+                className="glass-effect rounded-xl overflow-hidden card-shadow group"
               >
                 {/* Project Image */}
                 <div className="relative aspect-video overflow-hidden">
@@ -183,7 +181,7 @@ const Projects = () => {
                   </div>
                   
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <motion.a
                       href={project.github}
                       target="_blank"
@@ -198,21 +196,6 @@ const Projects = () => {
                       title="View Code"
                     >
                       <Github size={20} />
-                    </motion.a>
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className={`p-3 backdrop-blur-sm rounded-full transition-colors duration-300 ${
-                        theme === 'dark'
-                          ? 'bg-white/20 text-white hover:bg-white/30'
-                          : 'bg-black/10 text-gray-700 hover:bg-black/20'
-                      }`}
-                      title="Live Demo"
-                    >
-                      <ExternalLink size={20} />
                     </motion.a>
                   </div>
                 </div>
@@ -263,36 +246,21 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  <div className="flex gap-4">
+                  <div className="flex justify-center">
                     <motion.a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`flex items-center gap-2 text-sm transition-colors duration-300 ${
+                      className={`flex items-center gap-2 text-sm px-4 py-2 rounded-lg transition-all duration-300 glass-effect ${
                         theme === 'dark' 
-                          ? 'text-gray-300 hover:text-white' 
-                          : 'text-gray-700 hover:text-gray-900'
+                          ? 'text-gray-300 hover:text-white hover:bg-white/10' 
+                          : 'text-gray-700 hover:text-gray-900 hover:bg-black/10'
                       }`}
                     >
                       <Github size={16} />
-                      Code
-                    </motion.a>
-                    <motion.a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`flex items-center gap-2 text-sm transition-colors duration-300 ${
-                        theme === 'dark' 
-                          ? 'text-blue-400 hover:text-blue-300' 
-                          : 'text-blue-600 hover:text-blue-700'
-                      }`}
-                    >
-                      <Play size={16} />
-                      Demo
+                      View Code
                     </motion.a>
                   </div>
                 </div>

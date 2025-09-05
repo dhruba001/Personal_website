@@ -1,29 +1,11 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Code, Target, Trophy, Calendar, TrendingUp, Flame } from 'lucide-react'
+import { Code, Target, Trophy, TrendingUp, Flame } from 'lucide-react'
 import { useTheme } from '../../contexts/ThemeContext'
+import { fetchLeetCodeStats } from '../../services/apiService'
+import type { LeetCodeApiResponse } from '../../services/apiService'
 
-interface LeetCodeStats {
-  totalSolved: number
-  totalQuestions: number
-  acceptanceRate: number
-  ranking: number
-  contributionPoints: number
-  reputation: number
-}
-
-interface ProblemStats {
-  easy: { solved: number; total: number }
-  medium: { solved: number; total: number }
-  hard: { solved: number; total: number }
-}
-
-interface StreakData {
-  currentStreak: number
-  longestStreak: number
-  recentActivity: { date: string; count: number }[]
-}
 
 const LeetCodeDashboard = () => {
   const [ref, inView] = useInView({
@@ -32,95 +14,24 @@ const LeetCodeDashboard = () => {
   })
   
   const { theme } = useTheme()
-  const [stats, setStats] = useState<LeetCodeStats | null>(null)
-  const [problemStats, setProblemStats] = useState<ProblemStats | null>(null)
-  const [streakData, setStreakData] = useState<StreakData | null>(null)
+  const [data, setData] = useState<LeetCodeApiResponse | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Since LeetCode doesn't have a public API, I'll simulate realistic data
-    const fetchLeetCodeData = async () => {
+    const loadLeetCodeData = async () => {
       try {
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 1000))
-        
-        // Mock realistic LeetCode stats
-        const mockStats: LeetCodeStats = {
-          totalSolved: 347,
-          totalQuestions: 2847,
-          acceptanceRate: 67.8,
-          ranking: 125840,
-          contributionPoints: 1580,
-          reputation: 892
-        }
-        
-        const mockProblemStats: ProblemStats = {
-          easy: { solved: 156, total: 724 },
-          medium: { solved: 145, total: 1508 },
-          hard: { solved: 46, total: 615 }
-        }
-        
-        // Generate streak data
-        const generateStreakData = (): StreakData => {
-          const recentActivity = []
-          const today = new Date()
-          
-          for (let i = 29; i >= 0; i--) {
-            const date = new Date(today)
-            date.setDate(date.getDate() - i)
-            
-            // Generate realistic activity pattern
-            const dayOfWeek = date.getDay()
-            const isWeekend = dayOfWeek === 0 || dayOfWeek === 6
-            
-            // Higher chance of activity on weekdays
-            const activityChance = isWeekend ? 0.3 : 0.8
-            const count = Math.random() < activityChance ? 
-              Math.floor(Math.random() * 8) + 1 : 0
-            
-            recentActivity.push({
-              date: date.toISOString().split('T')[0],
-              count
-            })
-          }
-          
-          // Calculate current streak
-          let currentStreak = 0
-          for (let i = recentActivity.length - 1; i >= 0; i--) {
-            if (recentActivity[i].count > 0) {
-              currentStreak++
-            } else {
-              break
-            }
-          }
-          
-          return {
-            currentStreak,
-            longestStreak: 23,
-            recentActivity
-          }
-        }
-        
-        setStats(mockStats)
-        setProblemStats(mockProblemStats)
-        setStreakData(generateStreakData())
+        const leetcodeData = await fetchLeetCodeStats('dhruba_001')
+        setData(leetcodeData)
         setLoading(false)
       } catch (error) {
-        console.error('Error fetching LeetCode data:', error)
+        console.error('Error loading LeetCode data:', error)
         setLoading(false)
       }
     }
 
-    fetchLeetCodeData()
+    loadLeetCodeData()
   }, [])
 
-  const getActivityColor = (count: number) => {
-    if (count === 0) return theme === 'dark' ? '#0d1117' : '#ebedf0'
-    if (count <= 2) return theme === 'dark' ? '#0e4429' : '#9be9a8'
-    if (count <= 4) return theme === 'dark' ? '#006d32' : '#40c463'
-    if (count <= 6) return theme === 'dark' ? '#26a641' : '#30a14e'
-    return theme === 'dark' ? '#39d353' : '#216e39'
-  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -173,20 +84,20 @@ const LeetCodeDashboard = () => {
               { 
                 icon: Target, 
                 label: 'Problems Solved', 
-                value: stats?.totalSolved || 0, 
-                total: stats?.totalQuestions || 0,
+                value: data?.totalSolved || 0, 
+                total: data?.totalQuestions || 0,
                 color: 'text-green-400' 
               },
               { 
                 icon: TrendingUp, 
                 label: 'Acceptance Rate', 
-                value: `${stats?.acceptanceRate || 0}%`, 
+                value: `${data?.acceptanceRate || 0}%`, 
                 color: 'text-blue-400' 
               },
               { 
                 icon: Trophy, 
                 label: 'Global Ranking', 
-                value: `#${stats?.ranking?.toLocaleString() || 0}`, 
+                value: `#${data?.ranking?.toLocaleString() || 0}`, 
                 color: 'text-yellow-400' 
               },
             ].map((stat) => {
@@ -235,24 +146,24 @@ const LeetCodeDashboard = () => {
                 {[
                   { 
                     level: 'Easy', 
-                    solved: problemStats?.easy.solved || 0,
-                    total: problemStats?.easy.total || 0,
+                    solved: data?.easy.solved || 0,
+                    total: data?.easy.total || 0,
                     color: 'bg-green-500',
                     lightColor: 'bg-green-100',
                     textColor: 'text-green-600'
                   },
                   { 
                     level: 'Medium', 
-                    solved: problemStats?.medium.solved || 0,
-                    total: problemStats?.medium.total || 0,
+                    solved: data?.medium.solved || 0,
+                    total: data?.medium.total || 0,
                     color: 'bg-yellow-500',
                     lightColor: 'bg-yellow-100',
                     textColor: 'text-yellow-600'
                   },
                   { 
                     level: 'Hard', 
-                    solved: problemStats?.hard.solved || 0,
-                    total: problemStats?.hard.total || 0,
+                    solved: data?.hard.solved || 0,
+                    total: data?.hard.total || 0,
                     color: 'bg-red-500',
                     lightColor: 'bg-red-100',
                     textColor: 'text-red-600'
@@ -312,11 +223,10 @@ const LeetCodeDashboard = () => {
             </motion.div>
           </motion.div>
 
-          {/* Streak Information & Activity */}
-          <motion.div variants={itemVariants} className="grid md:grid-cols-2 gap-8">
-            {/* Streak Stats */}
+          {/* Streak Information */}
+          <motion.div variants={itemVariants} className="max-w-md mx-auto">
             <motion.div className="glass-effect rounded-2xl p-8">
-              <h3 className={`text-2xl font-bold mb-6 flex items-center gap-2 ${
+              <h3 className={`text-2xl font-bold mb-6 flex items-center justify-center gap-2 ${
                 theme === 'dark' ? 'text-white' : 'text-gray-900'
               }`}>
                 <Flame size={24} className="text-orange-500" />
@@ -328,7 +238,7 @@ const LeetCodeDashboard = () => {
                   <div className={`text-4xl font-bold mb-2 ${
                     theme === 'dark' ? 'text-orange-400' : 'text-orange-600'
                   }`}>
-                    {streakData?.currentStreak || 0}
+                    {data?.currentStreak || 0}
                   </div>
                   <div className={`text-lg ${
                     theme === 'dark' ? 'text-gray-300' : 'text-gray-700'
@@ -341,7 +251,7 @@ const LeetCodeDashboard = () => {
                   <div className={`text-2xl font-bold mb-1 ${
                     theme === 'dark' ? 'text-white' : 'text-gray-900'
                   }`}>
-                    {streakData?.longestStreak || 0}
+                    {data?.longestStreak || 0}
                   </div>
                   <div className={`text-sm ${
                     theme === 'dark' ? 'text-gray-400' : 'text-gray-600'
@@ -349,48 +259,6 @@ const LeetCodeDashboard = () => {
                     Longest Streak (days)
                   </div>
                 </div>
-              </div>
-            </motion.div>
-
-            {/* Recent Activity */}
-            <motion.div className="glass-effect rounded-2xl p-8">
-              <h3 className={`text-2xl font-bold mb-6 flex items-center gap-2 ${
-                theme === 'dark' ? 'text-white' : 'text-gray-900'
-              }`}>
-                <Calendar size={24} />
-                Recent Activity
-              </h3>
-              
-              <div className="grid grid-cols-10 gap-1">
-                {streakData?.recentActivity.map((day, index) => (
-                  <motion.div
-                    key={day.date}
-                    initial={{ scale: 0 }}
-                    animate={inView ? { scale: 1 } : { scale: 0 }}
-                    transition={{ delay: 0.8 + index * 0.02 }}
-                    className="w-6 h-6 rounded-sm cursor-pointer hover:ring-2 hover:ring-orange-400"
-                    style={{ backgroundColor: getActivityColor(day.count) }}
-                    title={`${day.count} problems solved on ${day.date}`}
-                  />
-                ))}
-              </div>
-              
-              <div className="flex items-center justify-between mt-4 text-sm">
-                <span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-                  Less
-                </span>
-                <div className="flex gap-1">
-                  {[0, 2, 4, 6, 8].map(count => (
-                    <div
-                      key={count}
-                      className="w-3 h-3 rounded-sm"
-                      style={{ backgroundColor: getActivityColor(count) }}
-                    />
-                  ))}
-                </div>
-                <span className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
-                  More
-                </span>
               </div>
             </motion.div>
           </motion.div>

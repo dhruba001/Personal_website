@@ -20,7 +20,10 @@
       "WebFetch(domain:api.github.com)",
       "Bash(npm run lint)",
       "Bash(npm update:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(timeout 5 npm run dev)",
+      "Bash(curl:*)",
+      "Bash(timeout 3 npm run dev)"
     ],
     "deny": []
   }
