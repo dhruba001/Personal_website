@@ -4,8 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "cd portfolio && npm install && npm run build",
-    "dev": "cd portfolio && npm run dev",
+    "dev": "cd portfolio && npm run dev", 
     "start": "cd portfolio && npm run preview"
-  },
-  "workspaces": ["portfolio"]
+  }
 }
