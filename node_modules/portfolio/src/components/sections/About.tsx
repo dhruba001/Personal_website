@@ -67,7 +67,7 @@ const About = () => {
                   <div>
                     <span className={theme === 'dark' ? 'text-red-400' : 'text-red-600'}>location</span>
                     <span className={theme === 'dark' ? 'text-white' : 'text-gray-900'}>:</span>{' '}
-                    <span className={theme === 'dark' ? 'text-green-400' : 'text-green-600'}>"🌍 Earth"</span>,
+                    <span className={theme === 'dark' ? 'text-green-400' : 'text-green-600'}>"🏙️ Bangalore, India"</span>,
                   </div>
                   <div>
                     <span className={theme === 'dark' ? 'text-red-400' : 'text-red-600'}>currentFocus</span>
