@@ -180,6 +180,21 @@ const GitHubDashboard = () => {
               </div>
             </motion.div>
           </motion.div>
+
+          {/* Take me to GitHub Button */}
+          <motion.div variants={itemVariants} className="text-center mt-12">
+            <motion.a
+              href="https://github.com/dhruba001"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-gray-700 to-gray-900 text-white font-semibold rounded-xl hover:from-gray-600 hover:to-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <Github size={20} />
+              Take me to GitHub
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
     </section>

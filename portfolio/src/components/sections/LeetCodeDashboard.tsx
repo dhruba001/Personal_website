@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Code, Target, Trophy, TrendingUp, Flame } from 'lucide-react'
+import { Code, Target, Trophy, TrendingUp, Flame, ExternalLink } from 'lucide-react'
 import { useTheme } from '../../contexts/ThemeContext'
 import { fetchLeetCodeStats } from '../../services/apiService'
 import type { LeetCodeApiResponse } from '../../services/apiService'
@@ -261,6 +261,21 @@ const LeetCodeDashboard = () => {
                 </div>
               </div>
             </motion.div>
+          </motion.div>
+
+          {/* Take me to LeetCode Button */}
+          <motion.div variants={itemVariants} className="text-center mt-12">
+            <motion.a
+              href="https://leetcode.com/dhruba_001"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-semibold rounded-xl hover:from-orange-400 hover:to-red-400 transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <ExternalLink size={20} />
+              Take me to LeetCode
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>
