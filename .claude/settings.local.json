@@ -24,7 +24,10 @@
       "Bash(timeout 5 npm run dev)",
       "Bash(curl:*)",
       "Bash(timeout 3 npm run dev)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(magick:*)",
+      "Bash(convert:*)",
+      "Bash(node:*)"
     ],
     "deny": []
   }

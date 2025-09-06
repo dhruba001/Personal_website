@@ -14,7 +14,7 @@ function AppContent() {
   const { theme } = useTheme()
   
   useEffect(() => {
-    document.title = 'Dhruba Goswami - Full Stack Developer'
+    document.title = 'DhrubaGoswami'
   }, [])
 
   return (

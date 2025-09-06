@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, ExternalLink } from 'lucide-react'
+import { Mail, MapPin, Send, Github, Linkedin, Twitter, ExternalLink } from 'lucide-react'
+import { SiLeetcode } from 'react-icons/si'
 import { useTheme } from '../../contexts/ThemeContext'
 
 const Contact = () => {
@@ -54,16 +55,9 @@ const Contact = () => {
       color: 'text-red-400'
     },
     {
-      icon: Phone,
-      label: 'Phone',
-      value: '+1 (555) 123-4567',
-      href: 'tel:+15551234567',
-      color: 'text-green-400'
-    },
-    {
       icon: MapPin,
       label: 'Location',
-      value: 'Earth 🌍',
+      value: 'Bangalore, India 🇮🇳',
       href: '#',
       color: 'text-blue-400'
     }
@@ -87,6 +81,12 @@ const Contact = () => {
       label: 'Twitter',
       href: 'https://x.com/dhruba_001',
       color: 'hover:text-sky-400'
+    },
+    {
+      icon: SiLeetcode,
+      label: 'LeetCode',
+      href: 'https://leetcode.com/dhruba_001',
+      color: 'hover:text-orange-400'
     }
   ]
 

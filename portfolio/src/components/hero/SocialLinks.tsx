@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Github, Linkedin, Mail, Twitter } from 'lucide-react'
+import { SiLeetcode } from 'react-icons/si'
 import { useTheme } from '../../contexts/ThemeContext'
 import { fadeInUp } from '../../utils/animations'
 
@@ -28,6 +29,12 @@ const socialLinksData: SocialLink[] = [
     href: 'https://x.com/dhruba_001',
     label: 'Twitter',
     color: 'hover:text-sky-400'
+  },
+  { 
+    icon: SiLeetcode, 
+    href: 'https://leetcode.com/dhruba_001',
+    label: 'LeetCode',
+    color: 'hover:text-orange-400'
   },
   { 
     icon: Mail, 
