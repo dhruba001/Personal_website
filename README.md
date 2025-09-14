@@ -304,7 +304,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## ⭐ Acknowledgments
 
-- **Design Inspiration**: Modern portfolio trends
+- **Design Inspiration**: Modern portfolios
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Logos**: [DevIcons](https://devicons.github.io/devicon/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
