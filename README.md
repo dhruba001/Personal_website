@@ -311,6 +311,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**🌟 If this helped you, please star the repo!**
+**🌟 If this helped you, please star the repo!!**
 
 *Built with ❤️ using modern React patterns and best practices*
