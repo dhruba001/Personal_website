@@ -15,7 +15,7 @@
 
 ---
 
-## 🎯 Overview
+## 🎯 Overview :
 
 This is a **highly maintainable**, **performance-optimized** portfolio website that showcases projects, skills, and professional experience. The codebase has been extensively refactored using modern React patterns and best practices.
 
