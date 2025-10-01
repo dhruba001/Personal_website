@@ -15,7 +15,7 @@
 
 ---
 
-## 🎯 Overview
+## 🎯 Overview :
 
 This is a **highly maintainable**, **performance-optimized** portfolio website that showcases projects, skills, and professional experience. The codebase has been extensively refactored using modern React patterns and best practices.
 
@@ -304,13 +304,13 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## ⭐ Acknowledgments
 
-- **Design Inspiration**: Modern portfolio trends
+- **Design Inspiration**: Modern portfolio for react devs
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Logos**: [DevIcons](https://devicons.github.io/devicon/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 
 ---
 
-**🌟 If this helped you, please star the repo!**
+**🌟 If this helped you, please star the repo!!**
 
 *Built with ❤️ using modern React patterns and best practices*
